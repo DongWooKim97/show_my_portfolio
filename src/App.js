@@ -8,6 +8,9 @@ function App() {
 			<Routes>
 				<Route path="/show_my_portfolio" element={<Home />} />
 				<Route path="/show_my_portfolio/about" element={<About />} />
+				<Route path="/show_my_portfolio/skills" element={<About />} />
+				<Route path="/show_my_portfolio/projects" element={<About />} />
+				<Route path="/show_my_portfolio/contact" element={<About />} />
 			</Routes>
 		</>
 	);
