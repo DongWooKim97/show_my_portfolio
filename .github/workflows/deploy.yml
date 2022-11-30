@@ -14,7 +14,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v2.1.2
         with:
-          node-version: "16.x"
+          node-version: '16.x'
 
       - name: Cache dependencies
         uses: actions/cache@v2
@@ -26,6 +26,7 @@ jobs:
 
       - run: npm ci
       - run: npm run build # 빌드 스크립트
+      - run: cp dist/index.html dist/404.html #404 redirect
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
