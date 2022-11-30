@@ -23,6 +23,8 @@
   - `three.js`를 사용해서 지구 사진을 회전하는 식으로 해보고자 함.
 - [프로토타입 레이아웃](https://ovenapp.io/project/o8J5l2yeXEAXJAzH8E8dJvKp2WeBttUo#PD4Kf)
 
+<br>
+
 ## 🤟 3. 개발
 
 <br>
