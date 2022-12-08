@@ -2,9 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import oc from 'open-color';
 import { shadow, media } from '../lib/StyleUtils.js';
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
-const MenuButton = styled(Link)`
+const MenuButton = styled.button`
 	font-weight: 600;
 	color: ${oc.cyan[6]};
 	border: 1px solid ${oc.cyan[6]};
@@ -32,7 +32,7 @@ const MenuButton = styled(Link)`
 const Positioner = styled.div`
 	display: flex;
 	flex-direction: column;
-	position: fixed;
+	position: relative;
 	top: 0px;
 	width: 100%;
 	${shadow(1)}
@@ -66,11 +66,17 @@ const HeaderContents = styled.div`
 `;
 
 // 로고
-const Logo = styled.div`
+const Logo = styled.button`
 	font-size: 1.4rem;
 	letter-spacing: 2px;
 	color: ${oc.teal[7]};
 	font-family: 'Rajdhani';
+	background-color: white;
+	outline: 0;
+	border: 0;
+	&:hover {
+		cursor: pointer;
+	}
 `;
 
 // 중간 여백
@@ -80,22 +86,38 @@ const Spacer = styled.div`
 
 // 하단 그래디언트 테두리
 const GradientBorder = styled.div`
-	height: 3px;
+	height: 1px;
 	background: linear-gradient(to right, ${oc.teal[6]}, ${oc.cyan[5]});
 `;
 
 const Header = () => {
+	const navigate = useNavigate();
+
+	const onClickHandler = (e) => {
+		e.preventDefault();
+		const eventId = e.target.id;
+		eventId ? navigate(`/${e.target.id}`) : navigate('/');
+	};
+
 	return (
 		<Positioner>
 			<WhiteBackground>
 				<HeaderContents>
-					<Logo>KimBxxloob</Logo>
+					<Logo onClick={onClickHandler}>KimBxxloob</Logo>
 					<Spacer />
 
-					<MenuButton>About</MenuButton>
-					<MenuButton>SKills</MenuButton>
-					<MenuButton>Projects</MenuButton>
-					<MenuButton>Contact</MenuButton>
+					<MenuButton id="about" onClick={onClickHandler}>
+						About
+					</MenuButton>
+					<MenuButton id="skills" onClick={onClickHandler}>
+						SKills
+					</MenuButton>
+					<MenuButton id="projects" onClick={onClickHandler}>
+						Projects
+					</MenuButton>
+					<MenuButton id="contact" onClick={onClickHandler}>
+						Contact
+					</MenuButton>
 				</HeaderContents>
 			</WhiteBackground>
 			<GradientBorder />
